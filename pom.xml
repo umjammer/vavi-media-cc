@@ -12,61 +12,71 @@
     <name></name>
   </organization>
   <version>1.0.0</version>
-  <url>http://www.vavisoft.com/</url>
+  <url>https://github.com/umjammer/vavi-media-cc</url>
   <description></description>
   <build>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <source>6</source>
-          <target>6</target>
-          <encoding>Windows-31J</encoding>
-          <compilerVersion>6</compilerVersion>
-          <executable>${JAVA_HOME}/bin/java</executable>
+          <source>8</source>
+          <target>8</target>
+          <encoding>UTF-8</encoding>
         </configuration>
       </plugin>
     </plugins>
   </build>
   <repositories>
+    <repository>
+      <id>jitpack.io</id>
+      <url>https://jitpack.io</url>
+    </repository>
   </repositories>
   <dependencies>
-  	<dependency>
-  		<groupId>junit</groupId>
-  		<artifactId>junit</artifactId>
-  		<version>4.5</version>
-  		<scope>test</scope>
-  		<optional>false</optional>
-  	</dependency>
-  	<dependency>
-  		<groupId>vavi</groupId>
-  		<artifactId>vavi-commons</artifactId>
-  		<version>1.0.0</version>
-  		<optional>false</optional>
-  	</dependency>
-  	<dependency>
-  		<groupId>vavi</groupId>
-  		<artifactId>vavi-commons-sandbox</artifactId>
-  		<version>0.3.0</version>
-  		<optional>false</optional>
-  	</dependency>
-        <dependency>
-        	<groupId>skinlf</groupId>
-        	<artifactId>skinlf</artifactId>
-        	<version>1.2.3</version>
-        	<optional>false</optional>
-        </dependency>
-        <dependency>
-        	<groupId>skinlf</groupId>
-        	<artifactId>nativeskin</artifactId>
-        	<version>1.2.3</version>
-        	<optional>false</optional>
-        </dependency>
-        <dependency>
-        	<groupId>vavi</groupId>
-        	<artifactId>vavi-awt</artifactId>
-        	<version>1.0.0</version>
-        	<optional>false</optional>
-        </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.5</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.github.umjammer</groupId>
+      <artifactId>vavi-commons</artifactId>
+      <version>1.0.6</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.umjammer</groupId>
+      <artifactId>vavi-commons-sandbox</artifactId>
+      <version>0.3.3</version>
+    </dependency>
+    <dependency>
+      <groupId>skinlf</groupId>
+      <artifactId>skinlf</artifactId>
+      <version>1.2.3</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>skinlf</groupId>
+      <artifactId>nativeskin</artifactId>
+      <version>1.2.3</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.github.umjammer</groupId>
+      <artifactId>vavi-awt</artifactId>
+      <version>1.0.1</version>
+    </dependency>
+    <dependency>
+      <groupId>net.sf.jacob-project</groupId>
+      <artifactId>jacob</artifactId>
+      <version>1.14.3</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
+  <scm>
+    <url>https://github.com/umjammer/vavi-media-cc</url>
+  </scm>
+  <issueManagement>
+    <url>https://github.com/umjammer/vavi-media-cc/issues</url>
+  </issueManagement>
 </project>

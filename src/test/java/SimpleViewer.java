@@ -21,7 +21,7 @@ import vavi.util.Debug;
 
 
 /**
- * サブタイトルビューアのサンプルです。
+ * 繧ｵ繝悶ち繧､繝医Ν繝薙Η繝ｼ繧｢縺ｮ繧ｵ繝ｳ繝励Ν縺ｧ縺吶�
  * 
  * @author <a href="mailto:vavivavi@yahoo.co.jp">Naohide Sano</a> (nsano)
  * @version 0.00 030218 nsano initial version <br>

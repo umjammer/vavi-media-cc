@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Shift_JIS"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <!-- ////////////////////////////////////////////////////////////////////// -->
 <!-- Copyright (c) 2002 by Naohide Sano, All rights reserved.               -->
@@ -7,91 +7,50 @@
 <!--                                                                        -->
 <!-- Closed Caption                                                         -->
 <!--                                                                        -->
-<!-- @author	Naohide Sano                                                -->
-<!-- @version	0.00	030124	nsano	initial version                     -->
+<!-- @author Naohide Sano                                                   -->
+<!-- @version 0.00 030124 nsano initial version                             -->
 <!--                                                                        -->
 <!-- ////////////////////////////////////////////////////////////////////// -->
 
 <project name="vavi-media-cc" default="run" basedir="."
-         xmlns:ivy="antlib:org.apache.ivy.ant">
+         xmlns:artifact="urn:maven-artifact-ant">
 
-  <property file="local.properties" />
-
-  <property name="dir.build" value="target/classes" />
-  <property name="dir.lib" value="lib" />
-
-  <!-- クラスパスの定義 -->
-  <path id="project.class.path">
-    <fileset dir="${dir.lib}">
+  <path id="maven-ant-tasks.classpath">
+    <fileset dir="${user.home}/lib/java/maven-ant-tasks">
       <include name="*.jar" />
     </fileset>
   </path>
+  <typedef resource="org/apache/maven/artifact/ant/antlib.xml" uri="urn:maven-artifact-ant"
+           classpathref="maven-ant-tasks.classpath" /> 
 
-  <path id="test.class.path">
-    <pathelement location="test" />
-    <path refid="project.class.path" />
+  <property environment="env"/>
+  <property file="local.properties" />
+
+  <xmlproperty file="pom.xml" />
+
+  <!-- Path Definitions -->
+  <path id="project.class.path">
+    <pathelement location="${java.dest.test}" />
+    <pathelement location="${java.dest}" />
+    <fileset refid="maven-ant-tasks.dependency.fileset"/>
   </path>
 
-  <!-- ターゲットの定義 -->
-
-  <!-- clean -->
-  <target name="clean" description="ビルド環境のクリア">
-    <delete dir="${dir.build}" />
-  </target>
-
   <!-- prepare -->
-  <target name="prepare" description="準備">
-    <mkdir dir="${dir.build}" />
-    <ivy:settings file="ivy-settings.xml" />
-    <ivy:convertpom pomFile="pom.xml" ivyFile="ivy.xml" />
-    <ivy:retrieve />
-  </target>
-
-  <!-- javac -->
-  <target name="compile" depends="prepare" description="コンパイル">
-    <javac debug="on" encoding="MS932" destdir="${dir.build}">
-      <classpath refid="project.class.path" />
-      <include name="**/*.java" />
-      <src path="src/main/java" />
-    </javac>
-
-    <copy todir="${dir.build}">
-      <fileset dir="src/main/resources">
-        <include name="**/*" />
-      </fileset>
-    </copy>
-
-  	<javac debug="on" deprecation="on" encoding="MS932">
-      <classpath>
-        <pathelement location="${dir.build}" />
-        <path refid="project.class.path" />
-      </classpath>
-      <include name="**/*.java" />
-      <exclude name="TestWS.java" />
-      <exclude name="SendSMS.java" />
-      <exclude name="SendFax.java" />
-      <exclude name="GeoIP.java" />
-      <exclude name="Translation.java" />
-      <exclude name="WebserviceXTranslator.java" />
-      <src path="src/test/java" />
-    </javac>
-
-    <copy todir="target/test-classes">
-      <fileset dir="src/test/resources">
-        <include name="**/*" />
-      </fileset>
-    </copy>
+  <target name="prepare" description="Preparing">
+    <artifact:pom file="pom.xml" id="maven.project"/>
+    <artifact:dependencies fileSetId="maven-ant-tasks.dependency.fileset">
+      <pom refid="maven.project"/>
+    </artifact:dependencies>
   </target>
 
   <!-- run -->
-  <target name="run" depends="compile" description="Run program">
+  <target name="run" depends="prepare" description="Run program">
     <echo message="${java.home}/bin/java"/>
-    <java classname="CCPlayer" fork="yes">
+    <java classname="CCPlayer" jvm="${jvm}" fork="yes">
       <env key="PATH" path="%PATH%;${dir.lib};${dir.baselib}" />
       <jvmarg value="-Djava.library.path=${dir.lib}" />
+      <jvmarg value="-Dvavi.media.ui.cc.viewClass=${viewer.class}" />
       <classpath>
-        <pathelement location="${dir.build}" />
-        <pathelement location="target/test-classes" />
         <path refid="project.class.path" />
       </classpath>
       <arg value="${run.in}" />
@@ -100,11 +59,10 @@
   </target>
 
   <!-- test -->
-  <target name="test" depends="compile" description="Run program">
+  <target name="test" depends="prepare" description="Run program">
     <java classname="SkinLFViewer" fork="yes">
       <jvmarg value="-Djava.library.path=${dir.lib}" />
       <classpath>
-        <pathelement location="${dir.build}" />
         <path refid="project.class.path" />
       </classpath>
       <arg value="${test.text.in}" />
@@ -113,11 +71,10 @@
   </target>
 
   <!-- srt -->
-  <target name="srt" depends="compile" description="Run program">
+  <target name="srt" depends="prepare" description="Run program">
     <java classname="CCPlayer" fork="yes">
       <jvmarg value="-Djava.library.path=${dir.lib}" />
       <classpath>
-        <pathelement location="${dir.build}" />
         <path refid="project.class.path" />
       </classpath>
       <arg value="${test.srt.in}" />
@@ -126,11 +83,10 @@
   </target>
 
   <!-- sub -->
-  <target name="sub" depends="compile" description="Run program">
+  <target name="sub" depends="prepare" description="Run program">
     <java classname="CCPlayer" fork="yes">
       <jvmarg value="-Djava.library.path=${dir.lib}" />
       <classpath>
-        <pathelement location="${dir.build}" />
         <path refid="project.class.path" />
       </classpath>
       <arg value="${test.sub.in}" />
@@ -139,11 +95,10 @@
   </target>
 
   <!-- ssa -->
-  <target name="ssa" depends="compile" description="Run program">
+  <target name="ssa" depends="prepare" description="Run program">
     <java classname="CCPlayer" fork="yes">
       <jvmarg value="-Djava.library.path=${dir.lib}" />
       <classpath>
-        <pathelement location="${dir.build}" />
         <path refid="project.class.path" />
       </classpath>
       <arg value="${test.ssa.in}" />

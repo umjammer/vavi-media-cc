@@ -14,7 +14,7 @@ import vavi.util.event.GenericEvent;
 
 
 /**
- * ŠÔŠu‚ÅƒCƒxƒ“ƒg‚ğ”­¶‚³‚¹‚éƒXƒPƒWƒ…[ƒ‰‚Å‚·B(¸”s)
+ * é–“éš”ã§ã‚¤ãƒ™ãƒ³ãƒˆã‚’ç™ºç”Ÿã•ã›ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ©ã§ã™ã€‚(å¤±æ•—)
  * 
  * @author <a href="mailto:vavivavi@yahoo.co.jp">Naohide Sano</a> (nsano)
  * @version 0.00 030304 nsano initial version <br>

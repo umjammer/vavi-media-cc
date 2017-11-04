@@ -43,7 +43,7 @@ public class SRTReader extends ClosedCaptionReader {
     /** */
     public ClosedCaption[] readClosedCaptions() throws IOException {
 
-        List<ClosedCaption> tmp = new ArrayList<ClosedCaption>();
+        List<ClosedCaption> tmp = new ArrayList<>();
 
 //        long base = new Date(0).getTime();
 //Debug.println("base: " + base + ": " + new Date(base));

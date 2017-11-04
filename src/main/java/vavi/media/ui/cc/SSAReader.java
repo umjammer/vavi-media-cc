@@ -15,8 +15,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import vavi.util.CSVTokenizer;
 import vavi.util.Debug;
+import vavix.util.CSVTokenizer;
 
 
 /**
@@ -42,7 +42,7 @@ public class SSAReader extends ClosedCaptionReader {
     /** */
     public ClosedCaption[] readClosedCaptions() throws IOException {
 
-        List<ClosedCaption> tmp = new ArrayList<ClosedCaption>();
+        List<ClosedCaption> tmp = new ArrayList<>();
 
         int mode = MODE_UNKNOWN;
 

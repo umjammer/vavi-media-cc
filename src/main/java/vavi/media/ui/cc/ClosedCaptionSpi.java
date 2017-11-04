@@ -16,23 +16,23 @@ import vavi.util.Debug;
 
 
 /**
- * Closed Caption Loader ‚Ì Service Provider Interface ‚Å‚·D
+ * Closed Caption Loader ã® Service Provider Interface ã§ã™ï¼
  * 
  * @author <a href="mailto:vavivavi@yahoo.co.jp">Naohide Sano</a> (nsano)
  * @version 0.00 030228 nsano initial version <br>
  */
 public interface ClosedCaptionSpi {
 
-    /** ƒ[ƒh‚Å‚«‚é‚©‚Ç‚¤‚©’²‚×‚Ü‚·D */
+    /** ãƒ­ãƒ¼ãƒ‰ã§ãã‚‹ã‹ã©ã†ã‹èª¿ã¹ã¾ã™ï¼ */
     boolean canReadInput(File file) throws IOException;
 
-    /** ƒŠ[ƒ_‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğì¬‚µ‚Ü‚·B */
+    /** ãƒªãƒ¼ãƒ€ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ä½œæˆã—ã¾ã™ã€‚ */
     ClosedCaptionReader createReaderInstance(File file) throws IOException;
 
     /** */
     boolean canWriteType(String type);
 
-    /** ƒŠ[ƒ_‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğì¬‚µ‚Ü‚·B */
+    /** ãƒªãƒ¼ãƒ€ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ä½œæˆã—ã¾ã™ã€‚ */
     ClosedCaptionWriter createWriterInstance(File file) throws IOException;
 
     /** */
@@ -77,7 +77,7 @@ Debug.println("writer: " + writer.getClass());
             try {
                 Properties props = new Properties();
                 props.load(clazz.getResourceAsStream(path));
-    props.list(System.err);
+props.list(System.err);
                 closedCaptionSpis = new ClosedCaptionSpi[props.size()];
                 Enumeration<?> e = props.propertyNames();
                 int i = 0;
@@ -86,8 +86,8 @@ Debug.println("writer: " + writer.getClass());
                     closedCaptionSpis[i++] = (ClosedCaptionSpi) Class.forName(className).newInstance();
                 }
             } catch (Exception e) {
-    Debug.printStackTrace(e);
-                System.exit(1);
+Debug.printStackTrace(e);
+                throw new IllegalStateException(e);
             }
         }
     }

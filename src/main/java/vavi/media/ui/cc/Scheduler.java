@@ -13,22 +13,22 @@ import vavi.util.event.GenericSupport;
 
 
 /**
- * ƒ‚ƒfƒ‹‚ÌŠÔ‚É]‚Á‚ÄƒCƒxƒ“ƒg‚ğ”­¶‚³‚¹‚éƒXƒPƒWƒ…[ƒ‰‚Å‚·B
+ * ãƒ¢ãƒ‡ãƒ«ã®æ™‚é–“ã«å¾“ã£ã¦ã‚¤ãƒ™ãƒ³ãƒˆã‚’ç™ºç”Ÿã•ã›ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ©ã§ã™ã€‚
  *
- * d—l‚Æ‚µ‚Äİ’è‚³‚ê‚½ EditorListener ‚É‘Î‚µ‚Ä
+ * ä»•æ§˜ã¨ã—ã¦è¨­å®šã•ã‚ŒãŸ EditorListener ã«å¯¾ã—ã¦
  * <ol>
- * <li> ClosedCaption#start ‚ğs‚Á‚½‚É
- * ƒJƒŒƒ“ƒg‚Ì ClosedCaption#getTimeFrom ‚Ì’l‚ğ‘«‚µ‚½‚ÉA
- * fireEditorUpdated ‚ğ–¼‘O "show" ˆø” ƒJƒŒƒ“ƒg‚Ì ClosedCaption
- * ‚Å”­s‚µ‚Ä‚­‚¾‚³‚¢B</li>
- * <li> ClosedCaption ‚ğ‚·‚×‚Äo—Í‚µI‚¦‚½Û‚ÉA
- * fireEditorUpdated ‚ğ–¼‘O "exit" ˆø” ÅŒã‚Ì ClosedCaption
- * ‚Å”­s‚µ‚Ä‚­‚¾‚³‚¢B</li>
+ * <li> ClosedCaption#start ã‚’è¡Œã£ãŸæ™‚åˆ»ã«
+ * ã‚«ãƒ¬ãƒ³ãƒˆã® ClosedCaption#getTimeFrom ã®å€¤ã‚’è¶³ã—ãŸæ™‚åˆ»ã«ã€
+ * fireEditorUpdated ã‚’åå‰ "show" å¼•æ•° ã‚«ãƒ¬ãƒ³ãƒˆã® ClosedCaption
+ * ã§ç™ºè¡Œã—ã¦ãã ã•ã„ã€‚</li>
+ * <li> ClosedCaption ã‚’ã™ã¹ã¦å‡ºåŠ›ã—çµ‚ãˆãŸéš›ã«ã€
+ * fireEditorUpdated ã‚’åå‰ "exit" å¼•æ•° æœ€å¾Œã® ClosedCaption
+ * ã§ç™ºè¡Œã—ã¦ãã ã•ã„ã€‚</li>
  * </ol>
  *
  * @author <a href="mailto:vavivavi@yahoo.co.jp">Naohide Sano</a> (nsano)
  * @version 0.00 030304 nsano initial version <br>
- *          0.01 030306 nsano d—lŒˆ’è <br>
+ *          0.01 030306 nsano ä»•æ§˜æ±ºå®š <br>
  */
 public abstract class Scheduler {
 
@@ -52,10 +52,10 @@ public abstract class Scheduler {
     /** */
     public abstract void moveTo(long time);
 
-    /** Ä¶‚·‚é”{‘¬ */
+    /** å†ç”Ÿã™ã‚‹å€é€Ÿ */
     protected int ff = 10;
 
-    /** Ä¶‚·‚é”{‘¬‚ğİ’è‚µ‚Ü‚·Bå‚ÉƒfƒoƒbƒO—p‚Å‚·B */
+    /** å†ç”Ÿã™ã‚‹å€é€Ÿã‚’è¨­å®šã—ã¾ã™ã€‚ä¸»ã«ãƒ‡ãƒãƒƒã‚°ç”¨ã§ã™ã€‚ */
     public void setSpeed(int ff) {
         this.ff = ff;
 Debug.println("speed: x " + ff);

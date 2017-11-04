@@ -11,7 +11,7 @@ import java.io.IOException;
 
 
 /**
- * VobSub (.idx ? + .sub) Service Provider ‚Å‚·D
+ * VobSub (.idx ? + .sub) Service Provider ã§ã™ï¼
  * 
  * @author <a href="mailto:vavivavi@yahoo.co.jp">Naohide Sano</a> (nsano)
  * @version 0.00 030228 nsano initial version <br>
@@ -21,12 +21,12 @@ public class SUBSpi implements ClosedCaptionSpi {
     /** */
     public static final String TYPE = "SUB";
 
-    /** ƒ[ƒh‚Å‚«‚é‚©‚Ç‚¤‚©’²‚×‚Ü‚·D */
+    /** ãƒ­ãƒ¼ãƒ‰ã§ãã‚‹ã‹ã©ã†ã‹èª¿ã¹ã¾ã™ï¼ */
     public boolean canReadInput(File file) throws IOException {
         return file.getName().endsWith(".sub");
     }
 
-    /** ƒ[ƒ_‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğì¬‚µ‚Ü‚·B */
+    /** ãƒ­ãƒ¼ãƒ€ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ä½œæˆã—ã¾ã™ã€‚ */
     public ClosedCaptionReader createReaderInstance(File file) throws IOException {
         return new SUBReader(file);
     }

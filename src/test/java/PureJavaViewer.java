@@ -40,7 +40,7 @@ import vavi.util.Debug;
 
 
 /**
- * TransFrame �𗘗p�����T�u�^�C�g���r���[�A�ł��B
+ * TransFrame を利用したサブタイトルビューアです。
  * 
  * @author <a href="mailto:vavivavi@yahoo.co.jp">Naohide Sano</a> (nsano)
  * @version 0.00 091202 nsano initial version <br>
@@ -117,7 +117,7 @@ public class PureJavaViewer extends JTransFrame implements Viewer {
     private String text;
 
     /** */
-    private List<Timer> timers = new ArrayList<Timer>();
+    private List<Timer> timers = new ArrayList<>();
 
     private void clearTimers() {
         Iterator<Timer> i = timers.iterator();
@@ -207,7 +207,7 @@ Debug.println(cc.getText());
                 y = (screen.height / 4 - h) / 2 + screen.height / 4 * 3;
             }
 
-            int ratio = 12; // �����̘g�̑����̔{��
+            int ratio = 12; // 文字の枠の太さの倍率
             int point = 32;
             String name = "MS UI Gothic";
             String fontFile = null;

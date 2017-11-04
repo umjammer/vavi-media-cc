@@ -8,20 +8,20 @@ package vavi.media.ui.cc;
 
 
 /**
- * Closed Caption ‚ÌŠî‘bƒ‚ƒfƒ‹ƒNƒ‰ƒX‚Å‚·B
+ * Closed Caption ã®åŸºç¤ãƒ¢ãƒ‡ãƒ«ã‚¯ãƒ©ã‚¹ã§ã™ã€‚
  * 
  * @author <a href="mailto:vavivavi@yahoo.co.jp">Naohide Sano</a> (nsano)
  * @version 0.00 030218 nsano initial version <br>
  */
 public class ClosedCaption {
 
-    /** Closed Caption ‚Ì‡˜A1 ‚©‚çn‚Ü‚è‚Ü‚·B */
+    /** Closed Caption ã®é †åºã€1 ã‹ã‚‰å§‹ã¾ã‚Šã¾ã™ã€‚ */
     private int sequenceNo;
-    /** Closed Caption ‚ÌƒeƒLƒXƒgA‰üs‚Í \n ‚ğİ’è‚µ‚Ä‚­‚¾‚³‚¢B */
+    /** Closed Caption ã®ãƒ†ã‚­ã‚¹ãƒˆã€æ”¹è¡Œã¯ \n ã‚’è¨­å®šã—ã¦ãã ã•ã„ã€‚ */
     private String text;
-    /** Closed Caption ‚Ì•\¦ */
+    /** Closed Caption ã®è¡¨ç¤ºæ™‚åˆ» */
     private long timeFrom;
-    /** Closed Caption ‚ÌÁ‹A‘¶İ‚µ‚È‚¢ê‡‚Í -1 ‚ğİ’è‚µ‚Ä‚­‚¾‚³‚¢B */
+    /** Closed Caption ã®æ¶ˆå»æ™‚åˆ»ã€å­˜åœ¨ã—ãªã„å ´åˆã¯ -1 ã‚’è¨­å®šã—ã¦ãã ã•ã„ã€‚ */
     private long timeTo;
 
     /** */

@@ -17,17 +17,17 @@ import vavi.util.Debug;
 
 
 /**
- * ƒ^ƒO•t‚«‰ÌŒ‚Ìƒ[ƒ_‚Å‚·B
+ * ã‚¿ã‚°ä»˜ãæ­Œè©ã®ãƒ­ãƒ¼ãƒ€ã§ã™ã€‚
  * 
- * d—l‚Æ‚µ‚Ä getTimeTo ‚Í¡‚Ì‚Æ‚±‚ëí‚É -1 ‚ğ•Ô‚µ‚Ü‚·B
+ * ä»•æ§˜ã¨ã—ã¦ getTimeTo ã¯ä»Šã®ã¨ã“ã‚å¸¸ã« -1 ã‚’è¿”ã—ã¾ã™ã€‚
  * 
  * <pre>
  *  [mm:ss:ms] message
- *  TODO    ms ‚Í 3 Œ…‚Å 1/1000 sec ’PˆÊ
- *                2 Œ…‚Å 1/100  sec ’PˆÊ
- * 			      –³‚µ‚Í•b’PˆÊ
- * 			'@' ‘Î‰
- * 			‰üs‚Ì‚İs‘Î‰
+ *  TODO    ms ã¯ 3 æ¡ã§ 1/1000 sec å˜ä½
+ *                2 æ¡ã§ 1/100  sec å˜ä½
+ * 			      ç„¡ã—ã¯ç§’å˜ä½
+ * 			'@' å¯¾å¿œ
+ * 			æ”¹è¡Œã®ã¿è¡Œå¯¾å¿œ
  * </pre>
  * 
  * @author <a href="mailto:vavivavi@yahoo.co.jp">Naohide Sano</a> (nsano)
@@ -41,7 +41,7 @@ public class LyricsReader extends ClosedCaptionReader {
 
     public ClosedCaption[] readClosedCaptions() throws IOException {
 
-        List<ClosedCaption> tmp = new ArrayList<ClosedCaption>();
+        List<ClosedCaption> tmp = new ArrayList<>();
 
         while (reader.ready()) {
             long time = 0;

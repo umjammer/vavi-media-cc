@@ -19,21 +19,21 @@ import vavi.util.event.GenericListener;
 
 
 /**
- * š–‹ƒVƒXƒeƒ€‚ÌƒNƒ‰ƒX‚Å‚·B
- * ƒVƒXƒeƒ€‚ÍŠÈ’P‚È‚Ì‚Å‚·‚ªAŠÌ‚Í
+ * å­—å¹•ã‚·ã‚¹ãƒ†ãƒ ã®ã‚¯ãƒ©ã‚¹ã§ã™ã€‚
+ * ã‚·ã‚¹ãƒ†ãƒ ã¯ç°¡å˜ãªã®ã§ã™ãŒã€è‚ã¯
  * <ol>
- * <li>ƒXƒNƒŠ[ƒ“ã‚É“§–¾‚È”wŒi‚Å•¶š‚¾‚¯•‚‚©‚Ñã‚ª‚ç‚¹‚é‚±‚Æ</li>
- * <li>‚¢‚ë‚ñ‚Èƒtƒ@ƒCƒ‹Œ`®‚É‘Î‰‚Å‚«‚é‚±‚Æ</li>
- * <li>Œy‚¢‚±‚Æ</li>
+ * <li>ã‚¹ã‚¯ãƒªãƒ¼ãƒ³ä¸Šã«é€æ˜ãªèƒŒæ™¯ã§æ–‡å­—ã ã‘æµ®ã‹ã³ä¸ŠãŒã‚‰ã›ã‚‹ã“ã¨</li>
+ * <li>ã„ã‚ã‚“ãªãƒ•ã‚¡ã‚¤ãƒ«å½¢å¼ã«å¯¾å¿œã§ãã‚‹ã“ã¨</li>
+ * <li>è»½ã„ã“ã¨</li>
  * </ol>
- * ‚Å‚·B1. ‚Í Java ‚¾‚Æ“ï‚µ‚¢‚Å‚·Bskinlf ‚Åƒgƒ‰ƒC‚µ‚Ä‚İ‚Ü‚·B
- * 2. ‚Í Java ‚Ì“¾ˆÓ‚Æ‚·‚é‚Æ‚±‚ë‚Å‚·Bƒ[ƒ_‚ğ SPI Œ`®‚É‚µ‚Ä‚ ‚ç‚ä‚é
- * ƒtƒH[ƒ}ƒbƒg‚É‘Î‰‚µ‚Ä‚İ‚¹‚Ü‚·Bèn‚ß‚ÍŠÔƒ^ƒO•t‚«‰ÌŒƒtƒ@ƒCƒ‹‚©H
- * 3. ‚à Java ‚¾‚Æ“ï‚µ‚¢‚Å‚·‚ËB‚Ç‚¤‚µ‚æ‚¤BÅˆ« C# ‚©H JDirect ‚àƒAƒŠ‚©H
+ * ã§ã™ã€‚1. ã¯ Java ã ã¨é›£ã—ã„ã§ã™ã€‚skinlf ã§ãƒˆãƒ©ã‚¤ã—ã¦ã¿ã¾ã™ã€‚
+ * 2. ã¯ Java ã®å¾—æ„ã¨ã™ã‚‹ã¨ã“ã‚ã§ã™ã€‚ãƒ­ãƒ¼ãƒ€ã‚’ SPI å½¢å¼ã«ã—ã¦ã‚ã‚‰ã‚†ã‚‹
+ * ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã«å¯¾å¿œã—ã¦ã¿ã›ã¾ã™ã€‚æ‰‹å§‹ã‚ã¯æ™‚é–“ã‚¿ã‚°ä»˜ãæ­Œè©ãƒ•ã‚¡ã‚¤ãƒ«ã‹ï¼Ÿ
+ * 3. ã‚‚ Java ã ã¨é›£ã—ã„ã§ã™ã­ã€‚ã©ã†ã—ã‚ˆã†ã€‚æœ€æ‚ª C# ã‹ï¼Ÿ JDirect ã‚‚ã‚¢ãƒªã‹ï¼Ÿ
  *
  * @author	<a href="mailto:vavivavi@yahoo.co.jp">Naohide Sano</a> (nsano)
  * @version	0.00 030214 nsano initial version <br>
- *          0.10 030304 nsano ˆê‰Š®¬ <br>
+ *          0.10 030304 nsano ä¸€å¿œå®Œæˆ <br>
  *          0.11 030306 nsano fix when lest timeFrom is -1 <br>
  */
 public class CCPlayer {
@@ -74,19 +74,28 @@ public class CCPlayer {
         public void eventHappened(GenericEvent ev) {
             String name = ev.getName();
             if ("show".equals(name)) {
-                viewer.showClosedCaption((ClosedCaption) ev.getArguments()[0]);
+                doShow((ClosedCaption) ev.getArguments()[0]);
             } else if ("exit".equals(name)) {
-                ClosedCaption cc = (ClosedCaption) ev.getArguments()[0];
-                long time = cc.getTimeTo() == -1 ?
-                    2000L :
-                    cc.getTimeTo() - cc.getTimeFrom();
-                try { Thread.sleep(time); } catch (Exception e) {}
-                System.exit(0);
+                doExit((ClosedCaption) ev.getArguments()[0]);
             } else {
 Debug.println("unknown command: " + name);
             }
         }
     };
+
+    /** */
+    private void doShow(ClosedCaption cc) {
+        viewer.showClosedCaption(cc);
+    }
+
+    /** */
+    private void doExit(ClosedCaption cc) {
+        long time = cc.getTimeTo() == -1 ?
+            2000L :
+            cc.getTimeTo() - cc.getTimeFrom();
+        try { Thread.sleep(time); } catch (Exception e) {}
+        System.exit(0);
+    }
 
     /** */
     private ClosedCaptionReader reader;
@@ -109,9 +118,7 @@ Debug.println("unknown command: " + name);
         player.readClosedCaption(new File(args[0]));
         player.setSpeed(Integer.parseInt(args[1]));
 
-//        player.setView(new SkinLFViewer());
-//        player.setView(new PureJavaViewer());
-          player.setView(new SwingViewer());
+        player.setView(Viewer.Factory.getViewer());
 new HandSynchronizer(player.scheduler);	// TODO
 
 //      player.start();

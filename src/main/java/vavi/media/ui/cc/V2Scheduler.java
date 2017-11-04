@@ -15,7 +15,7 @@ import vavi.util.event.GenericEvent;
 
 
 /**
- * 時間でイベントを発生させるスケジューラです。
+ * 譎る俣縺ｧ繧､繝吶Φ繝医ｒ逋ｺ逕溘＆縺帙ｋ繧ｹ繧ｱ繧ｸ繝･繝ｼ繝ｩ縺ｧ縺吶�
  * 
  * @author <a href="mailto:vavivavi@yahoo.co.jp">Naohide Sano</a> (nsano)
  * @version 0.00 030304 nsano initial version <br>
@@ -27,10 +27,10 @@ public class V2Scheduler extends Scheduler {
         super(ccs);
     }
 
-    /** カレントの CC の番号 */
+    /** 繧ｫ繝ｬ繝ｳ繝医�ｮ CC 縺ｮ逡ｪ蜿ｷ */
     private int current;
 
-    /** 開始した時刻 */
+    /** 髢句ｧ九＠縺滓凾蛻ｻ */
     private long started;
 
     /** */
@@ -73,7 +73,7 @@ Debug.println("next: " + sec(ccs[current].getTimeFrom()));
 Debug.println("started: " + sec(ccs[current].getTimeFrom()));
     }
 
-    /** 一時停止した時刻 */
+    /** 荳譎ょ●豁｢縺励◆譎ょ綾 */
     private long paused;
 
     /** */

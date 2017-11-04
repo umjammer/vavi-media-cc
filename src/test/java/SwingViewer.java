@@ -40,7 +40,7 @@ import vavi.util.Debug;
 
 
 /**
- * Swing �𗘗p�����T�u�^�C�g���r���[�A�ł��B
+ * Swing を利用したサブタイトルビューアです。
  * 
  * @author <a href="mailto:vavivavi@yahoo.co.jp">Naohide Sano</a> (nsano)
  * @version 0.00 091202 nsano initial version <br>
@@ -49,8 +49,8 @@ public class SwingViewer extends JFrame implements Viewer {
 
     /** */
     public SwingViewer() {
-        setBackground(new Color(0x00000000, true));
         setUndecorated(true);
+        setBackground(new Color(0x00000000, true)); // XXX before setUndecorated(ture), error occurs (OpenJDK 1.7.0)
         setAlwaysOnTop(true);
 
         setSize(w, h);
@@ -119,7 +119,7 @@ public class SwingViewer extends JFrame implements Viewer {
     private String text;
 
     /** */
-    private List<Timer> timers = new ArrayList<Timer>();
+    private List<Timer> timers = new ArrayList<>();
 
     private void clearTimers() {
         Iterator<Timer> i = timers.iterator();
@@ -209,7 +209,7 @@ Debug.println(cc.getText());
                 y = (screen.height / 4 - h) / 2 + screen.height / 4 * 3;
             }
 
-            int ratio = 12; // �����̘g�̑����̔{��
+            int ratio = 12; // 文字の枠の太さの倍率
             int point = 32;
             String name = "MS UI Gothic";
             String fontFile = null;

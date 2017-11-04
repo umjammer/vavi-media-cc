@@ -32,14 +32,14 @@ public class SUBReader extends ClosedCaptionReader {
     /** */
     public ClosedCaption[] readClosedCaptions() throws IOException {
 
-        List<ClosedCaption> tmp = new ArrayList<ClosedCaption>();
+        List<ClosedCaption> tmp = new ArrayList<>();
 
         while (reader.ready()) {
             String l = reader.readLine();
 
             ClosedCaption cc = new ClosedCaption();
 
-            // TODO text ’†‚Ì { ‚ª”²‚¯‚Ä‚µ‚Ü‚¤
+            // TODO text ä¸­ã® { ãŒæŠœã‘ã¦ã—ã¾ã†
             StringTokenizer st = new StringTokenizer(l, "{}");
 
             long start;

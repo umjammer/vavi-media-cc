@@ -15,6 +15,19 @@ package vavi.media.ui.cc;
  */
 public interface Viewer {
     void showClosedCaption(ClosedCaption cc);
+    
+    class Factory {
+        public static Viewer getViewer() {
+            try {
+                String className = System.getProperty("vavi.media.ui.cc.viewClass");
+                @SuppressWarnings("unchecked")
+                Class<Viewer> clazz = (Class<Viewer>) Class.forName(className);
+                return clazz.newInstance();
+            } catch (Exception e) {
+                throw new IllegalStateException(e);
+            }
+        }
+    }
 }
 
 /* */
