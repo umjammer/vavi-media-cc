@@ -18,18 +18,18 @@ import vavi.util.Debug;
 
 /**
  * タグ付き歌詞のローダです。
- * 
+ *
  * 仕様として getTimeTo は今のところ常に -1 を返します。
- * 
+ *
  * <pre>
  *  [mm:ss:ms] message
  *  TODO    ms は 3 桁で 1/1000 sec 単位
  *                2 桁で 1/100  sec 単位
- * 			      無しは秒単位
- * 			'@' 対応
- * 			改行のみ行対応
+ *                   無しは秒単位
+ *             '@' 対応
+ *             改行のみ行対応
  * </pre>
- * 
+ *
  * @author <a href="mailto:vavivavi@yahoo.co.jp">Naohide Sano</a> (nsano)
  * @version 0.00 030218 nsano initial version <br>
  */

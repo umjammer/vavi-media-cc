@@ -12,7 +12,7 @@ import java.io.IOException;
 
 /**
  * Lyrics Service Provider です．
- * 
+ *
  * @author <a href="mailto:vavivavi@yahoo.co.jp">Naohide Sano</a> (nsano)
  * @version 0.00 030228 nsano initial version <br>
  */

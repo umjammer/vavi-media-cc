@@ -99,9 +99,9 @@ Debug.println("no end");
             while (reader.ready()) {
                 l = reader.readLine();
 //System.err.println("Text[" + l + "]");
-        		if ("".equals(l)) {
-        		    break;
-        		}
+                if ("".equals(l)) {
+                    break;
+                }
                 sb.append(l);
                 sb.append("\n");
             }

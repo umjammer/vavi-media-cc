@@ -13,7 +13,7 @@ import java.io.Writer;
 
 /**
  * Closed Caption Writer SPI.
- * 
+ *
  * @author <a href="mailto:vavivavi@yahoo.co.jp">Naohide Sano</a> (nsano)
  * @version 0.00 070930 nsano initial version <br>
  */

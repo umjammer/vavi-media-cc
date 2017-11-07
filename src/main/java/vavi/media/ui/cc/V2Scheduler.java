@@ -16,7 +16,7 @@ import vavi.util.event.GenericEvent;
 
 /**
  * 時間でイベントを発生させるスケジューラです。
- * 
+ *
  * @author <a href="mailto:vavivavi@yahoo.co.jp">Naohide Sano</a> (nsano)
  * @version 0.00 030304 nsano initial version <br>
  */

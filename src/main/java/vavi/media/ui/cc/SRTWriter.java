@@ -21,7 +21,7 @@ import vavi.util.Debug;
 
 /**
  * SRT Writer.
- * 
+ *
  * @author <a href="mailto:vavivavi@yahoo.co.jp">Naohide Sano</a> (nsano)
  * @version 0.00 070930 nsano initial version <br>
  */

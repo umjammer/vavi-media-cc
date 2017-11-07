@@ -17,7 +17,7 @@ import vavix.util.ComUtil;
 
 /**
  * Synchronizer for Windows Media Player.
- * 
+ *
  * @author <a href="mailto:vavivavi@yahoo.co.jp">Naohide Sano</a> (nsano)
  * @version 0.00 030303 nsano initial version <br>
  */
