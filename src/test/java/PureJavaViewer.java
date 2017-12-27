@@ -42,7 +42,7 @@ import vavi.util.Debug;
 /**
  * TransFrame を利用したサブタイトルビューアです。
  *
- * @author <a href="mailto:vavivavi@yahoo.co.jp">Naohide Sano</a> (nsano)
+ * @author <a href="mailto:umjammer@gmail.com">Naohide Sano</a> (nsano)
  * @version 0.00 091202 nsano initial version <br>
  */
 public class PureJavaViewer extends JTransFrame implements Viewer {

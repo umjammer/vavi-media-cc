@@ -26,7 +26,7 @@ import vavi.util.event.GenericSupport;
  * で発行してください。</li>
  * </ol>
  *
- * @author <a href="mailto:vavivavi@yahoo.co.jp">Naohide Sano</a> (nsano)
+ * @author <a href="mailto:umjammer@gmail.com">Naohide Sano</a> (nsano)
  * @version 0.00 030304 nsano initial version <br>
  *          0.01 030306 nsano 仕様決定 <br>
  */

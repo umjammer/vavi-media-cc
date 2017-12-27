@@ -23,7 +23,7 @@ import vavi.util.Debug;
 /**
  * SRT Reader.
  * 
- * @author <a href="mailto:vavivavi@yahoo.co.jp">Naohide Sano</a> (nsano)
+ * @author <a href="mailto:umjammer@gmail.com">Naohide Sano</a> (nsano)
  * @version 0.00 030219 nsano initial version <br>
  *          0.01 030306 nsano fix reading <br>
  */

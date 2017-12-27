@@ -16,7 +16,7 @@ import vavi.util.event.GenericEvent;
 /**
  * 間隔でイベントを発生させるスケジューラです。(失敗)
  *
- * @author <a href="mailto:vavivavi@yahoo.co.jp">Naohide Sano</a> (nsano)
+ * @author <a href="mailto:umjammer@gmail.com">Naohide Sano</a> (nsano)
  * @version 0.00 030304 nsano initial version <br>
  */
 public class V1Scheduler extends Scheduler {

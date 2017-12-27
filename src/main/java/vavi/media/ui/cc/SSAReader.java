@@ -22,7 +22,7 @@ import vavix.util.CSVTokenizer;
 /**
  * SSA.
  *
- * @author <a href="mailto:vavivavi@yahoo.co.jp">Naohide Sano</a> (nsano)
+ * @author <a href="mailto:umjammer@gmail.com">Naohide Sano</a> (nsano)
  * @version 0.00 030219 nsano initial version <br>
  *          0.01 030303 nsano complete <br>
  *          0.02 030306 nsano fix line break <br>

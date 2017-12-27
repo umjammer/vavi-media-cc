@@ -48,7 +48,7 @@ import vavi.util.Debug;
 /**
  * SkinLF を利用したサブタイトルビューアです。
  * 
- * @author <a href="mailto:vavivavi@yahoo.co.jp">Naohide Sano</a> (nsano)
+ * @author <a href="mailto:umjammer@gmail.com">Naohide Sano</a> (nsano)
  * @version 0.00 030218 nsano initial version <br>
  *          0.01 030305 nsano add window mover <br>
  */

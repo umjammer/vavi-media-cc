@@ -21,7 +21,7 @@ import vavi.media.ui.cc.Synchronizer;
 /**
  * HandSynchronizer.
  * 
- * @author <a href="mailto:vavivavi@yahoo.co.jp">Naohide Sano</a> (nsano)
+ * @author <a href="mailto:umjammer@gmail.com">Naohide Sano</a> (nsano)
  * @version 0.00 030305 nsano initial version <br>
  */
 public class HandSynchronizer extends JFrame implements Synchronizer {
