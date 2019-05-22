@@ -4,7 +4,9 @@
  * Programmed by Naohide Sano
  */
 
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 //import java.text.SimpleDateFormat;
 
@@ -42,6 +44,9 @@ public class HandSynchronizer extends JFrame implements Synchronizer {
         getContentPane().setLayout(new FlowLayout());
 //      getContentPane().add(timeField);
         getContentPane().add(syncButton);
+
+        Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+        setLocation((screen.width - getWidth()) / 2, (screen.height - getHeight()) / 2);
 
         setVisible(true);
     }

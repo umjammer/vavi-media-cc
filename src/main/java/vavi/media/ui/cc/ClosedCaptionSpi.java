@@ -8,9 +8,10 @@ package vavi.media.ui.cc;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Enumeration;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Properties;
+import java.util.ServiceLoader;
 
 import vavi.util.Debug;
 
@@ -40,10 +41,10 @@ public interface ClosedCaptionSpi {
 
         /** */
         public static ClosedCaptionReader getReader(File file) throws IOException {
-            for (int i = 0; i < closedCaptionSpis.length; i++) {
-Debug.println("closedCaptionSpi: " + closedCaptionSpis[i]);
-                if (closedCaptionSpis[i].canReadInput(file)) {
-                    ClosedCaptionReader reader = closedCaptionSpis[i].createReaderInstance(file);
+            for (ClosedCaptionSpi closedCaptionSpi : closedCaptionSpis) {
+Debug.println("closedCaptionSpi: " + closedCaptionSpi);
+                if (closedCaptionSpi.canReadInput(file)) {
+                    ClosedCaptionReader reader = closedCaptionSpi.createReaderInstance(file);
 Debug.println("reader: " + reader.getClass());
                     return reader;
                 }
@@ -54,10 +55,10 @@ Debug.println("reader: " + reader.getClass());
 
         /** */
         public static ClosedCaptionWriter getWriter(File file, String type) throws IOException {
-            for (int i = 0; i < closedCaptionSpis.length; i++) {
-Debug.println("closedCaptionSpi: " + closedCaptionSpis[i]);
-                if (closedCaptionSpis[i].canWriteType(type)) {
-                    ClosedCaptionWriter writer = closedCaptionSpis[i].createWriterInstance(file);
+            for (ClosedCaptionSpi closedCaptionSpi : closedCaptionSpis) {
+Debug.println("closedCaptionSpi: " + closedCaptionSpi);
+                if (closedCaptionSpi.canWriteType(type)) {
+                    ClosedCaptionWriter writer = closedCaptionSpi.createWriterInstance(file);
 Debug.println("writer: " + writer.getClass());
                     return writer;
                 }
@@ -67,24 +68,13 @@ Debug.println("writer: " + writer.getClass());
         }
 
         /** */
-        private static ClosedCaptionSpi[] closedCaptionSpis;
+        private static List<ClosedCaptionSpi> closedCaptionSpis = new ArrayList<>();
 
         /** */
         static {
-            final String path = "/META-INF/services/ClosedCaptionSpi";
-            final Class<?> clazz = Factory.class;
-
             try {
-                Properties props = new Properties();
-                props.load(clazz.getResourceAsStream(path));
-props.list(System.err);
-                closedCaptionSpis = new ClosedCaptionSpi[props.size()];
-                Enumeration<?> e = props.propertyNames();
-                int i = 0;
-                while (e.hasMoreElements()) {
-                    String className = (String) e.nextElement();
-                    closedCaptionSpis[i++] = (ClosedCaptionSpi) Class.forName(className).newInstance();
-                }
+                ServiceLoader.load(ClosedCaptionSpi.class).forEach(closedCaptionSpis::add);
+closedCaptionSpis.forEach(System.err::println);
             } catch (Exception e) {
 Debug.printStackTrace(e);
                 throw new IllegalStateException(e);

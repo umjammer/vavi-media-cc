@@ -14,8 +14,13 @@ package vavi.media.ui.cc;
  * @version 0.00 030218 nsano initial version <br>
  */
 public interface Viewer {
+
+    /** */
     void showClosedCaption(ClosedCaption cc);
 
+    /**
+     * system property "vavi.media.ui.cc.viewClass"
+     */
     class Factory {
         public static Viewer getViewer() {
             try {

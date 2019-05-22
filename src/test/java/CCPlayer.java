@@ -31,8 +31,8 @@ import vavi.util.event.GenericListener;
  * フォーマットに対応してみせます。手始めは時間タグ付き歌詞ファイルか？
  * 3. も Java だと難しいですね。どうしよう。最悪 C# か？ JDirect もアリか？
  *
- * @author    <a href="mailto:umjammer@gmail.com">Naohide Sano</a> (nsano)
- * @version    0.00 030214 nsano initial version <br>
+ * @author <a href="mailto:umjammer@gmail.com">Naohide Sano</a> (nsano)
+ * @version 0.00 030214 nsano initial version <br>
  *          0.10 030304 nsano 一応完成 <br>
  *          0.11 030306 nsano fix when lest timeFrom is -1 <br>
  */

@@ -8,12 +8,12 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Frame;
 import java.awt.Toolkit;
-import java.awt.Window;
+import java.io.File;
 
-import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
+import javax.swing.JRootPane;
+import javax.swing.JTextArea;
+import javax.swing.JWindow;
 
 import vavi.media.ui.cc.ClosedCaption;
 import vavi.media.ui.cc.Viewer;
@@ -22,46 +22,61 @@ import vavi.util.Debug;
 
 /**
  * サブタイトルビューアのサンプルです。
- * 
+ *
  * @author <a href="mailto:umjammer@gmail.com">Naohide Sano</a> (nsano)
  * @version 0.00 030218 nsano initial version <br>
  *          0.01 030305 nsano be simple <br>
  */
-public class SimpleViewer extends Window implements Viewer {
+public class SimpleViewer extends JWindow implements Viewer {
 
     /** */
-    private JLabel label;
+    private JTextArea textArea;
 
     /** */
     public SimpleViewer() {
-        super(new Frame());
+        try {
+            textArea = new JTextArea(2, 20);
+//            textArea.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 120));
+            Font font = Font.createFont(Font.TRUETYPE_FONT, new File("tmp/cinecaption226.ttf"));
+            textArea.setFont(font.deriveFont(120f));
+            textArea.setWrapStyleWord(true);
+            textArea.setLineWrap(true);
+            textArea.setEditable(false);
+            textArea.setFocusable(false);
+            textArea.setForeground(Color.magenta);
+            textArea.setBackground(new Color(0, 0, 0, 0));
 
-        setLayout(new BorderLayout());
-        JLayeredPane layer = new JLayeredPane();
-        layer.setPreferredSize(new Dimension(640, 100));
-        add(layer, BorderLayout.CENTER);
+            Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+            setPreferredSize(new Dimension((int) (screen.width * 0.7), (int) (screen.height * 0.25)));
 
-        label = new JLabel();
-        label.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 40));
-        label.setForeground(Color.blue);
-        label.setSize(new Dimension(640, 100));
-        layer.add(label, JLayeredPane.PALETTE_LAYER);
+            //
+            setBackground(new Color(0, 0, 0, 0));
 
-        Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+            JRootPane root = getRootPane();
+            root.putClientProperty("Window.shadow", false);
 
-        pack();
+            setAlwaysOnTop(true);
 
-        setLocation((screen.width - getWidth()) / 2,
-                    (screen.height / 4 - getHeight()) / 2 +
-                     screen.height / 4 * 3);
+            getContentPane().add(textArea, BorderLayout.CENTER);
 
-        setVisible(true);
+            setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new IllegalStateException(e);
+        }
     }
 
     /** */
     public void showClosedCaption(ClosedCaption cc) {
 Debug.println(cc.getText());
-        label.setText(cc.getText());
+        textArea.setText(cc.getText());
+
+        pack();
+
+        Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+        setLocation((screen.width - getWidth()) / 2,
+                    (screen.height / 4 - getHeight()) / 2 +
+                     screen.height / 8 * 6);
     }
 }
 

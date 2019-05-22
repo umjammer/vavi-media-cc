@@ -5,15 +5,24 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
+
   <groupId>vavi</groupId>
   <artifactId>vavi-media-cc</artifactId>
+  <version>1.0.0</version>
+
   <name>Vavi Closed Caption API</name>
   <organization>
     <name></name>
   </organization>
-  <version>1.0.0</version>
   <url>https://github.com/umjammer/vavi-media-cc</url>
   <description></description>
+  <scm>
+    <url>https://github.com/umjammer/vavi-media-cc</url>
+  </scm>
+  <issueManagement>
+    <url>https://github.com/umjammer/vavi-media-cc/issues</url>
+  </issueManagement>
+
   <build>
     <plugins>
       <plugin>
@@ -26,19 +35,15 @@
       </plugin>
     </plugins>
   </build>
+
   <repositories>
     <repository>
       <id>jitpack.io</id>
       <url>https://jitpack.io</url>
     </repository>
   </repositories>
+
   <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.5</version>
-      <scope>test</scope>
-    </dependency>
     <dependency>
       <groupId>com.github.umjammer</groupId>
       <artifactId>vavi-commons</artifactId>
@@ -48,6 +53,24 @@
       <groupId>com.github.umjammer</groupId>
       <artifactId>vavi-commons-sandbox</artifactId>
       <version>0.3.3</version>
+    </dependency>
+    <dependency>
+      <groupId>net.sf.jacob-project</groupId>
+      <artifactId>jacob</artifactId>
+      <version>1.14.3</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>5.3.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.github.umjammer</groupId>
+      <artifactId>vavi-awt</artifactId>
+      <version>1.0.1</version>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>skinlf</groupId>
@@ -61,22 +84,6 @@
       <version>1.2.3</version>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>com.github.umjammer</groupId>
-      <artifactId>vavi-awt</artifactId>
-      <version>1.0.1</version>
-    </dependency>
-    <dependency>
-      <groupId>net.sf.jacob-project</groupId>
-      <artifactId>jacob</artifactId>
-      <version>1.14.3</version>
-      <scope>test</scope>
-    </dependency>
   </dependencies>
-  <scm>
-    <url>https://github.com/umjammer/vavi-media-cc</url>
-  </scm>
-  <issueManagement>
-    <url>https://github.com/umjammer/vavi-media-cc/issues</url>
-  </issueManagement>
+
 </project>
