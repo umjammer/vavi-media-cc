@@ -2,7 +2,7 @@
 
 # Closed Caption for Java
 
-![CC](https://lh3.googleusercontent.com/Siroy_ONsJpDCFFOaTGpaBP2OZLnzLzVyEHT1i4oOEw81EHTYzxSk_z_f3OES8I9gjhqnQHMOa10G1yOxyKmkl3gC-ZOR8sglh5CKYe8GcPsLvp0KcCjIgxrCMrCX4DmdgJEyzb6xA=w2400)
+<img src='https://lh3.googleusercontent.com/blm9bLRwJn-pNIkqCu-cIK4sAaxhNATpEsjT0f3SF1Z8izDXrc3yyIuit3lxTnigE73HHk6PDUGO5vLJSmdlG8wuNycWqlU7G7PwHR1P45-T9HYBsCAtrgTKW1VAL0oxcoaOlQ4upA=w2400' width="320" alt="Closed Caption"/>
 
 ## TODO
 
