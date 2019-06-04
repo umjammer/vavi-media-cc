@@ -8,14 +8,20 @@
 
   <groupId>vavi</groupId>
   <artifactId>vavi-media-cc</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
 
   <name>Vavi Closed Caption API</name>
   <organization>
     <name></name>
   </organization>
   <url>https://github.com/umjammer/vavi-media-cc</url>
-  <description></description>
+  <description>1.0.1
+
+   maintenance version
+
+1.0.0
+
+    initial version</description>
   <scm>
     <url>https://github.com/umjammer/vavi-media-cc</url>
   </scm>
@@ -40,6 +46,14 @@
     <repository>
       <id>jitpack.io</id>
       <url>https://jitpack.io</url>
+    </repository>
+    <repository>
+      <id>umjammer-mvn-repo</id>
+      <url>https://raw.github.com/umjammer/umjammer/mvn-repo/</url>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+      </snapshots>
     </repository>
   </repositories>
 
