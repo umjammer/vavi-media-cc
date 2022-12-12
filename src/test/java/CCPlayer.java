@@ -14,26 +14,15 @@ import vavi.media.ui.cc.Scheduler;
 import vavi.media.ui.cc.V2Scheduler;
 import vavi.media.ui.cc.Viewer;
 import vavi.util.Debug;
-import vavi.util.event.GenericEvent;
 import vavi.util.event.GenericListener;
 
 
 /**
- * 字幕システムのクラスです。
- * システムは簡単なのですが、肝は
- * <ol>
- * <li>スクリーン上に透明な背景で文字だけ浮かび上がらせること</li>
- * <li>いろんなファイル形式に対応できること</li>
- * <li>軽いこと</li>
- * </ol>
- * です。1. は Java だと難しいです。skinlf でトライしてみます。
- * 2. は Java の得意とするところです。ローダを SPI 形式にしてあらゆる
- * フォーマットに対応してみせます。手始めは時間タグ付き歌詞ファイルか？
- * 3. も Java だと難しいですね。どうしよう。最悪 C# か？ JDirect もアリか？
+ * Closed Caption.
  *
  * @author <a href="mailto:umjammer@gmail.com">Naohide Sano</a> (nsano)
  * @version 0.00 030214 nsano initial version <br>
- *          0.10 030304 nsano 一応完成 <br>
+ *          0.10 030304 nsano complete <br>
  *          0.11 030306 nsano fix when lest timeFrom is -1 <br>
  */
 public class CCPlayer {
@@ -70,16 +59,14 @@ public class CCPlayer {
     }
 
     /** */
-    private GenericListener listener = new GenericListener() {
-        public void eventHappened(GenericEvent ev) {
-            String name = ev.getName();
-            if ("show".equals(name)) {
-                doShow((ClosedCaption) ev.getArguments()[0]);
-            } else if ("exit".equals(name)) {
-                doExit((ClosedCaption) ev.getArguments()[0]);
-            } else {
+    private GenericListener listener = ev -> {
+        String name = ev.getName();
+        if ("show".equals(name)) {
+            doShow((ClosedCaption) ev.getArguments()[0]);
+        } else if ("exit".equals(name)) {
+            doExit((ClosedCaption) ev.getArguments()[0]);
+        } else {
 Debug.println("unknown command: " + name);
-            }
         }
     };
 
@@ -93,7 +80,7 @@ Debug.println("unknown command: " + name);
         long time = cc.getTimeTo() == -1 ?
             2000L :
             cc.getTimeTo() - cc.getTimeFrom();
-        try { Thread.sleep(time); } catch (Exception e) {}
+        try { Thread.sleep(time); } catch (Exception ignored) {}
         System.exit(0);
     }
 
@@ -106,10 +93,8 @@ Debug.println("unknown command: " + name);
         setModel(reader.readClosedCaptions());
     }
 
-    //----
-
     /**
-     *
+     * @param args 0: cc, 1: start
      */
     public static void main(String[] args) throws Exception {
 

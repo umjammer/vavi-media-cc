@@ -61,7 +61,7 @@ Debug.println("end");
 Debug.println("next: " + sec(ccs[current].getTimeFrom()));
             }
         }
-    };
+    }
 
     /** */
     public void start() {

@@ -21,7 +21,7 @@ import vavi.util.Debug;
 
 
 /**
- * サブタイトルビューアのサンプルです。
+ * Simple CC Viewer.
  *
  * @author <a href="mailto:umjammer@gmail.com">Naohide Sano</a> (nsano)
  * @version 0.00 030218 nsano initial version <br>

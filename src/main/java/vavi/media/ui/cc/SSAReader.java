@@ -51,14 +51,19 @@ public class SSAReader extends ClosedCaptionReader {
 //System.err.println(l);
             if (l.trim().startsWith("[") && l.trim().endsWith("]")) {
                 String m = l.trim().substring(1, l.trim().length() - 1);
-                if ("Script Info".equals(m)) {
+                switch (m) {
+                case "Script Info":
                     mode = MODE_SCRIPT_INFO;
-                } else if ("V4 Styles".equals(m)) {
+                    break;
+                case "V4 Styles":
                     mode = MODE_V4_STYLES;
-                } else if ("Events".equals(m)) {
+                    break;
+                case "Events":
                     mode = MODE_EVENTS;
-                } else {
+                    break;
+                default:
                     mode = MODE_UNKNOWN;
+                    break;
                 }
 Debug.println("mode change: " + mode);
             } else if (l.trim().equals("")) {

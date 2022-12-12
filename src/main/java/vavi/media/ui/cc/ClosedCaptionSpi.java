@@ -70,7 +70,7 @@ Debug.println("writer: " + writer.getClass());
         /** */
         private static List<ClosedCaptionSpi> closedCaptionSpis = new ArrayList<>();
 
-        /** */
+        /* */
         static {
             try {
                 ServiceLoader.load(ClosedCaptionSpi.class).forEach(closedCaptionSpis::add);

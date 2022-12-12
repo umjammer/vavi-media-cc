@@ -20,10 +20,11 @@ import java.awt.font.TextLayout;
 import java.awt.geom.AffineTransform;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 import java.util.StringTokenizer;
@@ -40,7 +41,7 @@ import vavi.util.Debug;
 
 
 /**
- * TransFrame を利用したサブタイトルビューアです。
+ * CC Viewer using TransFrame.
  *
  * @author <a href="mailto:umjammer@gmail.com">Naohide Sano</a> (nsano)
  * @version 0.00 091202 nsano initial version <br>
@@ -102,7 +103,7 @@ public class PureJavaViewer extends JTransFrame implements Viewer {
             float sw = (float) tl.getBounds().getWidth();
             // float sh = (float) tl.getBounds().getHeight();
             y += tl.getAscent();
-            Shape sha = tl.getOutline(AffineTransform.getTranslateInstance(w / 2 - sw / 2, y));
+            Shape sha = tl.getOutline(AffineTransform.getTranslateInstance(w / 2f - sw / 2, y));
             g2.setColor(Color.black);
             g2.setStroke(new BasicStroke(stroke));
             g2.draw(sha);
@@ -120,9 +121,7 @@ public class PureJavaViewer extends JTransFrame implements Viewer {
     private List<Timer> timers = new ArrayList<>();
 
     private void clearTimers() {
-        Iterator<Timer> i = timers.iterator();
-        while (i.hasNext()) {
-            Timer timer = i.next();
+        for (Timer timer : timers) {
             timer.cancel();
         }
     }
@@ -151,7 +150,7 @@ Debug.println(cc.getText());
 
             repaint();
         }
-    };
+    }
 
     /** */
     private int w = 800;
@@ -174,14 +173,13 @@ Debug.println(cc.getText());
     /** */
     private float stroke;
 
-    /** */
+    /* */
     {
         final String path = "SkinLFViewer.properties";
-        final Class<?> clazz = PureJavaViewer.class;
 
         try {
             Properties props = new Properties();
-            props.load(clazz.getResourceAsStream(path));
+            props.load(PureJavaViewer.class.getResourceAsStream(path));
 
             String value = props.getProperty("window.width");
             if (value != null) {
@@ -227,7 +225,7 @@ System.err.println("font0: " + fontFile);
             }
 
             if (fontFile != null) {
-                InputStream is = new FileInputStream(fontFile);
+                InputStream is = Files.newInputStream(Paths.get(fontFile));
                 plainFont = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(Font.PLAIN, point);
                 is.close();
                 italicFont = plainFont.deriveFont(Font.ITALIC);
