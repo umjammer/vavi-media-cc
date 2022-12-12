@@ -50,9 +50,15 @@ public class SwingViewer extends JFrame implements Viewer {
 
     /** */
     public SwingViewer() {
-        setUndecorated(true);
-        setBackground(new Color(0x00000000, true)); // XXX before setUndecorated(ture), error occurs (OpenJDK 1.7.0)
         setAlwaysOnTop(true);
+
+        // set window opacity
+        setUndecorated(true);
+        setBackground(new Color(0, 0, 0, 0));
+
+        // eliminate window's shadow
+        JRootPane root = getRootPane();
+        root.putClientProperty("Window.shadow", false);
 
         setSize(w, h);
         setLocation(x, y);
@@ -177,7 +183,7 @@ Debug.println(cc.getText());
 
     /* */
     {
-        final String path = "SkinLFViewer.properties";
+        final String path = "Viewer.properties";
         final Class<?> clazz = SwingViewer.class;
 
         try {

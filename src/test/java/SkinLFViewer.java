@@ -213,7 +213,7 @@ Debug.println(cc.getText());
 
     /* */
     {
-        final String path = "SkinLFViewer.properties";
+        final String path = "Viewer.properties";
         final Class<?> clazz = SkinLFViewer.class;
 
         try {

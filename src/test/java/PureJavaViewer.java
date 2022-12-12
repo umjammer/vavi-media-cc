@@ -175,7 +175,7 @@ Debug.println(cc.getText());
 
     /* */
     {
-        final String path = "SkinLFViewer.properties";
+        final String path = "Viewer.properties";
 
         try {
             Properties props = new Properties();
