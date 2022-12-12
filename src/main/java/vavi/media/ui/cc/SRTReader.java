@@ -7,9 +7,9 @@
 package vavi.media.ui.cc;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -34,7 +34,7 @@ public class SRTReader extends ClosedCaptionReader {
 
     /** */
     public SRTReader(File file) throws IOException {
-        super(new InputStreamReader(new FileInputStream(file), encoding));
+        super(new InputStreamReader(Files.newInputStream(file.toPath()), encoding));
     }
 
     /** */
@@ -51,7 +51,7 @@ public class SRTReader extends ClosedCaptionReader {
 int line = 1;
 try {
         while (reader.ready()) {
-            String l = null;
+            String l;
             ClosedCaption cc = new ClosedCaption();
 
             l = reader.readLine();
@@ -106,7 +106,7 @@ Debug.println("no end");
                 sb.append("\n");
             }
 //Debug.println("cc: " + (tmp.size() + 1));
-            String text = sb.toString().substring(0, sb.length() - 1);
+            String text = sb.substring(0, sb.length() - 1);
             text = text.replaceAll("<[\\w/]\\w*>", "");
             cc.setText(text);
 
@@ -122,7 +122,7 @@ Debug.println("no end");
         return ccs;
     }
 
-    /** */
+    /* */
     static {
 
         final Class<?> c = SRTReader.class;

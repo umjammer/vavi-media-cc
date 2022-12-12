@@ -27,7 +27,6 @@ import java.io.InputStream;
 import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 import java.util.StringTokenizer;
@@ -46,7 +45,7 @@ import vavi.util.Debug;
 
 
 /**
- * SkinLF を利用したサブタイトルビューアです。
+ * CC Viewer using SkinLF.
  * 
  * @author <a href="mailto:umjammer@gmail.com">Naohide Sano</a> (nsano)
  * @version 0.00 030218 nsano initial version <br>
@@ -129,7 +128,7 @@ public class SkinLFViewer extends Window implements Viewer {
             float sw = (float) tl.getBounds().getWidth();
             // float sh = (float) tl.getBounds().getHeight();
             y += tl.getAscent();
-            Shape sha = tl.getOutline(AffineTransform.getTranslateInstance(w / 2 - sw / 2, y));
+            Shape sha = tl.getOutline(AffineTransform.getTranslateInstance(w / 2f - sw / 2, y));
             g2.setColor(Color.black);
             g2.setStroke(new BasicStroke(stroke));
             g2.draw(sha);
@@ -152,9 +151,7 @@ public class SkinLFViewer extends Window implements Viewer {
     private List<Timer> timers = new ArrayList<>();
 
     private void clearTimers() {
-        Iterator<Timer> i = timers.iterator();
-        while (i.hasNext()) {
-            Timer timer = i.next();
+        for (Timer timer : timers) {
             timer.cancel();
         }
     }
@@ -191,7 +188,7 @@ Debug.println(cc.getText());
 
             repaint();
         }
-    };
+    }
 
     /** */
     private int w = 800;
@@ -214,9 +211,9 @@ Debug.println(cc.getText());
     /** */
     private float stroke;
 
-    /** */
+    /* */
     {
-        final String path = "SkinLFViewer.properties";
+        final String path = "Viewer.properties";
         final Class<?> clazz = SkinLFViewer.class;
 
         try {

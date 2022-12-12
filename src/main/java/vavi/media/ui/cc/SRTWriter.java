@@ -7,9 +7,9 @@
 package vavi.media.ui.cc;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.nio.file.Files;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -32,7 +32,7 @@ public class SRTWriter extends ClosedCaptionWriter {
 
     /** */
     public SRTWriter(File file) throws IOException {
-        super(new OutputStreamWriter(new FileOutputStream(file), encoding));
+        super(new OutputStreamWriter(Files.newOutputStream(file.toPath()), encoding));
     }
 
     /** */
@@ -60,7 +60,7 @@ public class SRTWriter extends ClosedCaptionWriter {
         writer.flush();
     }
 
-    /** */
+    /* */
     static {
 
         final Class<?> c = SRTWriter.class;

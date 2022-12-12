@@ -56,7 +56,7 @@ Debug.println("end");
 Debug.println("next: " + sec(next - now));
             }
         }
-    };
+    }
 
     /** */
     public void start() {

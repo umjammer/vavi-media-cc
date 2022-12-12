@@ -20,17 +20,18 @@ import java.awt.font.TextLayout;
 import java.awt.geom.AffineTransform;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 import java.util.StringTokenizer;
 import java.util.Timer;
 import java.util.TimerTask;
-
 import javax.swing.JFrame;
+import javax.swing.JRootPane;
 import javax.swing.event.MouseInputAdapter;
 import javax.swing.event.MouseInputListener;
 
@@ -40,7 +41,7 @@ import vavi.util.Debug;
 
 
 /**
- * Swing を利用したサブタイトルビューアです。
+ * Swing CC Viewer
  *
  * @author <a href="mailto:umjammer@gmail.com">Naohide Sano</a> (nsano)
  * @version 0.00 091202 nsano initial version <br>
@@ -49,9 +50,15 @@ public class SwingViewer extends JFrame implements Viewer {
 
     /** */
     public SwingViewer() {
-        setUndecorated(true);
-        setBackground(new Color(0x00000000, true)); // XXX before setUndecorated(ture), error occurs (OpenJDK 1.7.0)
         setAlwaysOnTop(true);
+
+        // set window opacity
+        setUndecorated(true);
+        setBackground(new Color(0, 0, 0, 0));
+
+        // eliminate window's shadow
+        JRootPane root = getRootPane();
+        root.putClientProperty("Window.shadow", false);
 
         setSize(w, h);
         setLocation(x, y);
@@ -104,7 +111,7 @@ public class SwingViewer extends JFrame implements Viewer {
             float sw = (float) tl.getBounds().getWidth();
             // float sh = (float) tl.getBounds().getHeight();
             y += tl.getAscent();
-            Shape sha = tl.getOutline(AffineTransform.getTranslateInstance(w / 2 - sw / 2, y));
+            Shape sha = tl.getOutline(AffineTransform.getTranslateInstance(w / 2f - sw / 2, y));
             g2.setColor(Color.black);
             g2.setStroke(new BasicStroke(stroke));
             g2.draw(sha);
@@ -122,9 +129,7 @@ public class SwingViewer extends JFrame implements Viewer {
     private List<Timer> timers = new ArrayList<>();
 
     private void clearTimers() {
-        Iterator<Timer> i = timers.iterator();
-        while (i.hasNext()) {
-            Timer timer = i.next();
+        for (Timer timer : timers) {
             timer.cancel();
         }
     }
@@ -153,7 +158,7 @@ Debug.println(cc.getText());
 
             repaint();
         }
-    };
+    }
 
     /** */
     private int w = 1440;
@@ -176,9 +181,9 @@ Debug.println(cc.getText());
     /** */
     private float stroke;
 
-    /** */
+    /* */
     {
-        final String path = "SkinLFViewer.properties";
+        final String path = "Viewer.properties";
         final Class<?> clazz = SwingViewer.class;
 
         try {
@@ -229,7 +234,7 @@ System.err.println("font0: " + fontFile);
             }
 
             if (fontFile != null) {
-                InputStream is = new FileInputStream(fontFile);
+                InputStream is = Files.newInputStream(Paths.get(fontFile));
                 plainFont = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(Font.PLAIN, point);
                 is.close();
                 italicFont = plainFont.deriveFont(Font.ITALIC);

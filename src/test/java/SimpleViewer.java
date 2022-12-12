@@ -18,16 +18,22 @@ import javax.swing.JWindow;
 import vavi.media.ui.cc.ClosedCaption;
 import vavi.media.ui.cc.Viewer;
 import vavi.util.Debug;
+import vavi.util.properties.annotation.Property;
+import vavi.util.properties.annotation.PropsEntity;
 
 
 /**
- * サブタイトルビューアのサンプルです。
+ * Simple CC Viewer.
  *
  * @author <a href="mailto:umjammer@gmail.com">Naohide Sano</a> (nsano)
  * @version 0.00 030218 nsano initial version <br>
  *          0.01 030305 nsano be simple <br>
  */
+@PropsEntity(url = "file:local.properties")
 public class SimpleViewer extends JWindow implements Viewer {
+
+    @Property
+    String font;
 
     /** */
     private JTextArea textArea;
@@ -35,9 +41,11 @@ public class SimpleViewer extends JWindow implements Viewer {
     /** */
     public SimpleViewer() {
         try {
+            PropsEntity.Util.bind(this);
+
             textArea = new JTextArea(2, 20);
 //            textArea.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 120));
-            Font font = Font.createFont(Font.TRUETYPE_FONT, new File("tmp/cinecaption226.ttf"));
+            Font font = Font.createFont(Font.TRUETYPE_FONT, new File(this.font));
             textArea.setFont(font.deriveFont(120f));
             textArea.setWrapStyleWord(true);
             textArea.setLineWrap(true);
@@ -61,7 +69,7 @@ public class SimpleViewer extends JWindow implements Viewer {
 
             setVisible(true);
         } catch (Exception e) {
-            e.printStackTrace();
+e.printStackTrace();
             throw new IllegalStateException(e);
         }
     }

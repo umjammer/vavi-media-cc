@@ -44,8 +44,8 @@ public class LyricsReader extends ClosedCaptionReader {
         List<ClosedCaption> tmp = new ArrayList<>();
 
         while (reader.ready()) {
-            long time = 0;
-            String text = null;
+            long time;
+            String text;
             String line = reader.readLine();
             if (line == null) {
                 break;
